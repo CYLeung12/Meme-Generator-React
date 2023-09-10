@@ -1,38 +1,56 @@
-.App {
-  text-align: center;
+main {
+  padding: 50px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-family: "Karla", sans-serif;
+  margin: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header {
+  background: linear-gradient(90deg, #d32000 1.18%, #d35d26 100%);
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  height: 65px;
+  color: #FFF;
+  padding: 20px 50px;
 }
 
-.App-link {
-  color: #61dafb;
+.header--image {
+  height: 100%;
+  margin-right: 6px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.header--title {
+  font-size: 1.5rem;
+  margin-right: auto;
+}
+
+.header--project {
+  font-size: 1rem;
+}
+
+.form {
+  display: grid;
+  /* have two 40px rows with two evenly divided column */
+  grid-template: 40px 40px / 1fr 1fr;
+  gap: 15px;
+}
+
+.form--input {
+  font-family: "Karla", sans-serif;
+  border-radius: 5px;
+  border: 1px solid grey;
+  text-indent: 5px;
+}
+
+.form--button {
+  /* so the button fill up all two columns */
+  grid-column: 1/-1;
+  font-family: "Karla", sans-serif;
+  border-radius: 5px;
+  background: linear-gradient(90deg, #d32000 1.18%, #d35d26 100%);
+  color: #FFF;
+  border: none;
+  cursor: pointer;
 }
