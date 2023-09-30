@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import memesData from "../memesData";
 
 export default function Meme() {
@@ -8,10 +8,15 @@ export default function Meme() {
         randomImage: ""
     });
 
+    function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+        const { name, value } = event.currentTarget;
+        setMeme(prevData => ({
+            ...prevData,
+            [name]: value
+        }))
+    }
+
     const [allMemeImages, setAllMemeImages] = useState(memesData);
-
-
-
     const getMemeImage = () => {
         const Memes = allMemeImages.data.memes;
         const randomMemeItem = Memes[Math.floor(Math.random() * Memes.length)];
@@ -21,14 +26,19 @@ export default function Meme() {
         }));
     }
 
+
     return (
         <main>
             <div className="form">
-                <input type="text" className="form--input" placeholder="Top Text" />
-                <input type="text" className="form--input" placeholder="Bottom Text" />
+                <input type="text" className="form--input" placeholder="Top Text" onChange={handleChange} name="topText" />
+                <input type="text" className="form--input" placeholder="Bottom Text" onChange={handleChange} name="bottomText" />
                 <button className="form--button" onClick={getMemeImage}>Get your Meme!</button>
             </div>
-            <img src={meme.randomImage} className="meme--image" />
+            <div className="meme">
+                <img src={meme.randomImage} className="meme--image" />
+                <h2 className="meme--text top">{meme.topText}</h2>
+                <h2 className="meme--text bottom">{meme.bottomText}</h2>
+            </div>
         </main>
     )
 }
